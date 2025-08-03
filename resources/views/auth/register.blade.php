@@ -1,3 +1,5 @@
+@extends('layouts.main')
+@section('content')
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -94,3 +96,5 @@
     <p><a href="/">← Back to Home</a></p>
 
 </div>
+
+@endsection
