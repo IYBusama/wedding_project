@@ -10,7 +10,12 @@ class AdminEventController extends Controller
     {
         return view('admin.add_event');
     }
-    public function addEvent(Request $request) {}
+    public function addEvent(Request $request) {
+        $request->validate([
+            'eventDate' => 'required',
+            'eventCategory' => 'required',
+        ]);
+    }
     public function showEditEvent()
     {
         return view('admin.edit_event');

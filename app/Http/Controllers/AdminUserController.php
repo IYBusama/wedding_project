@@ -15,11 +15,25 @@ class AdminUserController extends Controller
     {
         return view('admin.add_user');
     }
-    public function AddUser(Request $request) {}
+    public function AddUser(Request $request)
+    {
+        $request->validate([
+            'UserName' => 'required|string|max:255',
+            'UserEmail' => 'required',
+            'UserPassword' => 'required|min:6',
+        ]);
+    }
     public function showEditUser()
     {
         return view('admin.edit_user');
     }
-    public function editUser(Request $request) {}
+    public function editUser(Request $request)
+    {
+        $request->validate([
+            'UserName' => 'required|string|max:255',
+            'UserEmail' => 'required',
+            'UserPassword' => 'required|min:6',
+        ]);
+    }
     public function userDelete(Request $request, $id) {}
 }

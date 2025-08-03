@@ -30,19 +30,19 @@
                     <!-- User Name Input -->
                     <div>
                         <label for="editUserName" class="block text-gray-700 font-semibold mb-1">User Name</label>
-                        <input type="text" id="editUserName" name="editUserName" value="John Doe" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="editUserName" name="UserName" value="John Doe" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <!-- Email Input -->
                     <div>
                         <label for="editUserEmail" class="block text-gray-700 font-semibold mb-1">Email</label>
-                        <input type="email" id="editUserEmail" name="editUserEmail" value="john.doe@example.com" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="email" id="editUserEmail" name="UserEmail" value="john.doe@example.com" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
 
                     <!-- Password Input -->
                     <div>
                         <label for="editUserPassword" class="block text-gray-700 font-semibold mb-1">Password</label>
-                        <input type="password" id="editUserPassword" name="editUserPassword" placeholder="Leave blank to keep current password" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="password" id="editUserPassword" name="UserPassword" placeholder="Leave blank to keep current password" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <!-- Form Action Buttons -->
