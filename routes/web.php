@@ -8,7 +8,13 @@ use App\Http\Middleware\RoleMiddleware;
 
 //common pages
 Route::get('/',function(){
-    return "weclcome";
+    return view('common_pages.home');
+});
+Route::get('/about',function(){
+    return view('common_pages.about');
+});
+Route::get('/contact',function(){
+    return view('common_pages.contact');
 });
 
 
