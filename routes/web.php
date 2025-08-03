@@ -7,13 +7,13 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Middleware\RoleMiddleware;
 
 //common pages
-Route::get('/',function(){
+Route::get('/', function () {
     return view('common_pages.home');
 });
-Route::get('/about',function(){
+Route::get('/about', function () {
     return view('common_pages.about');
 });
-Route::get('/contact',function(){
+Route::get('/contact', function () {
     return view('common_pages.contact');
 });
 
@@ -31,6 +31,9 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+    Route::get('/user-list', function () {
+        return view('admin.user_list');
+    });
 });
 
 // User dashboard routes
