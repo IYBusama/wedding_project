@@ -1,21 +1,18 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminEventController;
+use App\Http\Controllers\AdminUserController;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CommonPageController;
 use App\Http\Middleware\RoleMiddleware;
 
 //common pages
-Route::get('/', function () {
-    return view('common_pages.home');
-});
-Route::get('/about', function () {
-    return view('common_pages.about');
-});
-Route::get('/contact', function () {
-    return view('common_pages.contact');
-});
+Route::get('/', [CommonPageController::class, 'showHome']);
+Route::get('/about', [CommonPageController::class, 'showAbout']);
+Route::get('/contact', [CommonPageController::class, 'showContact']);
 
 
 //auth route
@@ -28,18 +25,27 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Admin dashboard routes
 Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
-    Route::get('/user-list', function () {
-        return view('admin.user_list');
-    });
-    Route::get('/add-user', function () {
-        return view('admin.add_user');
-    });
-    Route::get('/edit-user',function(){
-        return view('admin.edit_user');
-    });
+
+    Route::get('/dashboard', [AdminController::class, 'showDashboard'])->name('admin.dashboard');
+
+    //admin - user function
+    Route::get('/user-list', [AdminUserController::class, 'showUserList'])->name('AdminUser.showUserList');
+    Route::get('/add-user', [AdminUserController::class, 'showAddUser'])->name('AdminUser.showAddUser');
+    Route::post('/user-store', [AdminUserController::class, 'AddUser'])->name('AdminUser.AddUser');
+    Route::get('/edit-user', [AdminUserController::class, 'showEditUser'])->name('AdminUser.showEditUser');
+    Route::post('/edit-update', [AdminUserController::class, 'editUser'])->name('AdminUser.editUser');
+    Route::delete('/user-delete', [AdminUserController::class, 'userDelete'])->name('AdminUser.userDelete');
+
+    //Admin - Event function
+    Route::get('/add-event', [AdminEventController::class, 'showAddEvent'])->name('AdminEvent.showAddEvent');
+    Route::post('/store-event', [AdminEventController::class, 'addEvent'])->name('AdminEvent.addEvent');
+    Route::get('/edit-event', [AdminEventController::class, 'showEditEvent'])->name('AdminEvent.showEditEvent');
+    Route::post('/event-store', [AdminEventController::class, 'editEvent'])->name('AdminEvent.editEvent');
+    Route::delete('/event-delete', [AdminEventController::class, 'eventDelete'])->name('AdminEvent.eventDelete');
+
+    //booking
+    Route::get('/booking-list', [AdminController::class, 'showBooking'])->name('Admin.showBooking');
+    Route::delete('/booking-delete', [AdminController::class, 'deleteBooking'])->name('Admin.deleteBooking');
 });
 
 // User dashboard routes
