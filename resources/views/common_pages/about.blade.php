@@ -121,7 +121,7 @@
     }
 </style>
 
-
+@include('components.navbar')
 
 <!-- About Header -->
 <section class="about-header">
@@ -228,6 +228,6 @@
     </div>
 </section>
 
-
+@include('components.footer')
 
 @endsection
