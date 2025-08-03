@@ -34,6 +34,12 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/user-list', function () {
         return view('admin.user_list');
     });
+    Route::get('/add-user', function () {
+        return view('admin.add_user');
+    });
+    Route::get('/edit-user',function(){
+        return view('admin.edit_user');
+    });
 });
 
 // User dashboard routes
