@@ -1,193 +1,100 @@
-<style>
-    .admin-container {
-        display: flex;
-        min-height: 100vh;
-    }
+@extends('layouts.dashboard')
+@section('dashboard')
+<!-- Main application container with a responsive flex layout -->
+<div class="flex flex-col md:flex-row min-h-screen">
 
-    .sidebar {
-        width: 250px;
-        background: var(--dark-color);
-        color: white;
-        padding: 20px 0;
-    }
+@include('components.admin_sidebar')
+    <!-- Main Content Area -->
+    <main class="flex-1 p-8 overflow-auto">
 
-    .sidebar-header {
-        padding: 0 20px 20px;
-        border-bottom: 1px solid #444;
-    }
+        <!-- Dashboard Header -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+            <div class="flex items-center space-x-2 text-gray-600">
+                <!-- Simple SVG for a user icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>User</span>
+                <span class="text-gray-500">(Admin)</span>
+            </div>
+        </header>
 
-    .sidebar-header h3 {
-        color: var(--primary-color);
-    }
+        <!-- Summary Cards Section -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Total Events Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h2 class="text-xl font-semibold text-gray-700">Total Events</h2>
+                <p class="text-4xl font-bold text-gray-900 mt-2">1,234</p>
+            </div>
+            <!-- Total Users Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h2 class="text-xl font-semibold text-gray-700">Total Users</h2>
+                <p class="text-4xl font-bold text-gray-900 mt-2">567</p>
+            </div>
+            <!-- Total Bookings Card -->
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h2 class="text-xl font-semibold text-gray-700">Total Bookings</h2>
+                <p class="text-4xl font-bold text-gray-900 mt-2">890</p>
+            </div>
+        </section>
 
-    .sidebar-menu {
-        padding: 20px 0;
-    }
+        <!-- Recent Events Table Section -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Events</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-left table-auto">
+                    <thead class="text-gray-600 border-b-2 border-gray-200">
+                        <tr>
+                            <th class="py-3 px-4 font-semibold">ID</th>
+                            <th class="py-3 px-4 font-semibold">Event Title</th>
+                            <th class="py-3 px-4 font-semibold">Date</th>
+                            <th class="py-3 px-4 font-semibold">Category</th>
+                            <th class="py-3 px-4 font-semibold">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <!-- Example Row 1 -->
+                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                            <td class="py-3 px-4">1</td>
+                            <td class="py-3 px-4">Music Festival 2023</td>
+                            <td class="py-3 px-4">2023-10-25</td>
+                            <td class="py-3 px-4">Music</td>
+                            <td class="py-3 px-4">
+                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
+                                <a href="#" class="text-red-600 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <!-- Example Row 2 -->
+                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                            <td class="py-3 px-4">2</td>
+                            <td class="py-3 px-4">Tech Conference</td>
+                            <td class="py-3 px-4">2023-11-10</td>
+                            <td class="py-3 px-4">Tech</td>
+                            <td class="py-3 px-4">
+                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
+                                <a href="#" class="text-red-600 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <!-- Example Row 3 -->
+                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                            <td class="py-3 px-4">3</td>
+                            <td class="py-3 px-4">Art Exhibition</td>
+                            <td class="py-3 px-4">2023-12-01</td>
+                            <td class="py-3 px-4">Art</td>
+                            <td class="py-3 px-4">
+                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
+                                <a href="#" class="text-red-600 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    .sidebar-menu ul {
-        list-style: none;
-    }
+    </main>
 
-    .sidebar-menu li {
-        margin-bottom: 5px;
-    }
+</div>
 
-    .sidebar-menu a {
-        display: block;
-        padding: 10px 20px;
-        color: #ccc;
-        transition: all 0.3s ease;
-    }
-
-    .sidebar-menu a:hover,
-    .sidebar-menu a.active {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-    }
-
-    .sidebar-menu i {
-        margin-right: 10px;
-        width: 20px;
-        text-align: center;
-    }
-
-    .main-content {
-        flex: 1;
-        background: #f5f5f5;
-        padding: 20px;
-    }
-
-    .header {
-        background: white;
-        padding: 15px 20px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .header h2 {
-        color: var(--dark-color);
-    }
-
-    .user-info {
-        display: flex;
-        align-items: center;
-    }
-
-    .user-info img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-    }
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        margin-bottom: 20px;
-    }
-
-    .stat-card {
-        background: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .stat-card h3 {
-        color: #666;
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .stat-card p {
-        font-size: 28px;
-        font-weight: 700;
-        color: var(--primary-color);
-    }
-
-    .stat-card i {
-        font-size: 40px;
-        color: var(--primary-color);
-        float: right;
-        opacity: 0.3;
-    }
-
-    .recent-events {
-        background: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .recent-events h3 {
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    table th,
-    table td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-    }
-
-    table th {
-        background: #f9f9f9;
-        font-weight: 500;
-    }
-
-    .status {
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 500;
-    }
-
-    .status.pending {
-        background: #fff3cd;
-        color: #856404;
-    }
-
-    .status.confirmed {
-        background: #d4edda;
-        color: #155724;
-    }
-
-    .status.cancelled {
-        background: #f8d7da;
-        color: #721c24;
-    }
-
-    .btn {
-        padding: 5px 10px;
-        border-radius: 3px;
-        font-size: 14px;
-    }
-
-    .btn-primary {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .btn-danger {
-        background: var(--danger-color);
-        color: white;
-    }
-</style>
-
-<h2>Hello</h2>
-
-<form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@endsection
