@@ -27,11 +27,11 @@
                         <!-- Add New Event Form Section -->
             <section class="bg-white p-6 rounded-lg shadow-md mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Add New Event</h2>
-                <form class="space-y-4">
+                <form class="space-y-4" action="#" method="post">
                     <!-- Event Title Input -->
                     <div>
                         <label for="eventTitle" class="block text-gray-700 font-semibold mb-1">Event Title</label>
-                        <input type="text" id="eventTitle" name="eventTitle" placeholder="e.g., Music Festival 2024" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="eventTitle" name="eventTitle" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <!-- Date Input -->
@@ -43,7 +43,7 @@
                     <!-- Category Input -->
                     <div>
                         <label for="eventCategory" class="block text-gray-700 font-semibold mb-1">Category</label>
-                        <input type="text" id="eventCategory" name="eventCategory" placeholder="e.g., Music, Tech, Art" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="eventCategory" name="eventCategory" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     
                     <!-- Submit Button -->
