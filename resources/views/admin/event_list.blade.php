@@ -29,7 +29,7 @@
             <section class="bg-white p-6 rounded-lg shadow-md mb-8">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-2xl font-bold text-gray-800">Recent Events</h2>
-                    <a href="#" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-200">
+                    <a href="{{route('AdminEvent.showAddEvent')}}" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-200">
                         Add New Event
                     </a>
                 </div>
@@ -38,42 +38,33 @@
                         <thead class="text-gray-600 border-b-2 border-gray-200">
                             <tr>
                                 <th class="py-3 px-4 font-semibold">ID</th>
-                                <th class="py-3 px-4 font-semibold">Event</th>
-                                <th class="py-3 px-4 font-semibold">Create Date</th>
+                                <th class="py-3 px-4 font-semibold">Event Title</th>
+                                <th class="py-3 px-4 font-semibold">Event Date</th>
+                                <th class="py-3 px-4 font-semibold">Event Category</th>
                                 <th class="py-3 px-4 font-semibold">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
-                            <!-- Example User 1 -->
+                            @foreach ($events as $event)
                             <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">101</td>
-                                <td class="py-3 px-4">Event name</td>
-                                <td class="py-3 px-4">Event Date</td>
+                                <td class="py-3 px-4">{{ $event->id }}</td>
+                                <td class="py-3 px-4">{{$event->eventTitle}}</td>
+                                <td class="py-3 px-4">{{$event->eventDate}}</td>
+                                <td class="py-3 px-4">{{$event->eventCategory}}</td>
                                 <td class="py-3 px-4">
-                                    <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
+                                    <div class="flex items-center space-x-2">
+                                        <a href="{{route('AdminEvent.showEditEvent',$event->id)}}"
+                                            class="text-blue-600 hover:underline">Edit</a> &nbsp;&nbsp;|
+
+                                        <form action="{{route('AdminEvent.eventDelete',$event->id)}}" method="POST" >
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
-                            <!-- Example User 2 -->
-                            <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">102</td>
-                                <td class="py-3 px-4">Event name</td>
-                                <td class="py-3 px-4">Event Date</td>
-                                <td class="py-3 px-4">
-                                    <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
-                                </td>
-                            </tr>
-                            <!-- Example User 3 -->
-                            <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">103</td>
-                                <td class="py-3 px-4">Event name</td>
-                                <td class="py-3 px-4">Event Date</td>
-                                <td class="py-3 px-4">
-                                    <a href="/edit-update/{id}" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

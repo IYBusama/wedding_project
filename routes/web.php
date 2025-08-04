@@ -40,8 +40,8 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/event-list',[AdminEventController::class,'showeventList'])->name('AdminEvent.showeventList');
     Route::get('/add-event', [AdminEventController::class, 'showAddEvent'])->name('AdminEvent.showAddEvent');
     Route::post('/store-event', [AdminEventController::class, 'addEvent'])->name('AdminEvent.addEvent');
-    Route::get('/edit-event', [AdminEventController::class, 'showEditEvent'])->name('AdminEvent.showEditEvent');
-    Route::post('/event-store', [AdminEventController::class, 'editEvent'])->name('AdminEvent.editEvent');
+    Route::get('/edit-event/{id}', [AdminEventController::class, 'showEditEvent'])->name('AdminEvent.showEditEvent');
+    Route::put('/event-store/{id}', [AdminEventController::class, 'editEvent'])->name('AdminEvent.editEvent');
     Route::delete('/event-delete/{id}', [AdminEventController::class, 'eventDelete'])->name('AdminEvent.eventDelete');
 
     //booking

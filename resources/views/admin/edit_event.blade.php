@@ -27,33 +27,35 @@
 
             <!-- Add New Event Form Section -->
             <section class="bg-white p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Add New Event</h2>
-                <form class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">Update New Event</h2>
+                <form class="space-y-4" action="{{route('AdminEvent.editEvent',$event->id)}}" method="post">
+                    @method('PUT')
+                    @csrf
                     <!-- Event Title Input -->
                     <div>
                         <label for="eventTitle" class="block text-gray-700 font-semibold mb-1">Event Title</label>
-                        <input type="text" id="eventTitle" name="eventTitle" placeholder="e.g., Music Festival 2024" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="eventTitle" name="eventTitle" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{old('eventTitle',$event->eventTitle)}}">
                     </div>
 
                     <!-- Date Input -->
                     <div>
                         <label for="eventDate" class="block text-gray-700 font-semibold mb-1">Date</label>
-                        <input type="date" id="eventDate" name="eventDate" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="date" id="eventDate" name="eventDate" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{old('eventDate',$event->eventDate)}}">
                     </div>
 
                     <!-- Category Input -->
                     <div>
                         <label for="eventCategory" class="block text-gray-700 font-semibold mb-1">Category</label>
-                        <input type="text" id="eventCategory" name="eventCategory" placeholder="e.g., Music, Tech, Art" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="eventCategory" name="eventCategory" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" value="{{old('eventCategory',$event->eventCategory)}}">
                     </div>
 
                     <!-- Submit Button -->
                     <div class="flex justify-end">
                         <button type="submit" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-200">
-                            Add Event
+                            Update Event
                         </button>
                     </div>
-                    <p><a href="/admin/user-list">← Back to Home</a></p>
+                    <p><a href="/admin/event-list">← Back to Home</a></p>
                 </form>
             </section>
         </main>
