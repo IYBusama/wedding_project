@@ -39,43 +39,35 @@
                             <tr>
                                 <th class="py-3 px-4 font-semibold">ID</th>
                                 <th class="py-3 px-4 font-semibold">User</th>
+                                <th class="py-3 px-4 font-semibold">Creation Time</th>
                                 <th class="py-3 px-4 font-semibold">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-100">
                             <!-- Example User 1 -->
+                            @foreach ($users as $user)
                             <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">101</td>
-                                <td class="py-3 px-4">John Doe</td>
+                                <td class="py-3 px-4">{{ $user->id }}</td>
+                                <td class="py-3 px-4">{{ $user->name }}</td>
+                                <td class="py-3 px-4">{{ $user->created_at }}</td>
                                 <td class="py-3 px-4">
-                                    <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
+                                    <div class="flex items-center space-x-2">
+                                        <a href="{{ route('AdminUser.showEditUser', $user->id) }}"
+                                            class="text-blue-600 hover:underline">Edit</a> &nbsp;|
+
+                                        <form action="{{ route('AdminUser.userDelete', $user->id) }}" method="POST" >
+                                            @method("DELETE")
+                                            @csrf
+                                            <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
-                            <!-- Example User 2 -->
-                            <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">102</td>
-                                <td class="py-3 px-4">Jane Smith</td>
-                                <td class="py-3 px-4">
-                                    <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
-                                </td>
-                            </tr>
-                            <!-- Example User 3 -->
-                            <tr class="hover:bg-gray-50 transition-colors duration-150">
-                                <td class="py-3 px-4">103</td>
-                                <td class="py-3 px-4">Peter Jones</td>
-                                <td class="py-3 px-4">
-                                    <a href="/edit-update/{id}" class="text-blue-600 hover:underline">Edit</a> |
-                                    <a href="#" class="text-red-600 hover:underline">Delete</a>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
             </section>
-
         </main>
-
     </div>
     @endsection

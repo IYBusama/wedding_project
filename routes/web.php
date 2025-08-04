@@ -33,7 +33,7 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/add-user', [AdminUserController::class, 'showAddUser'])->name('AdminUser.showAddUser');
     Route::post('/user-store', [AdminUserController::class, 'AddUser'])->name('AdminUser.AddUser');
     Route::get('/edit-user/{id}', [AdminUserController::class, 'showEditUser'])->name('AdminUser.showEditUser');
-    Route::post('/edit-update/{id}', [AdminUserController::class, 'editUser'])->name('AdminUser.editUser');
+    Route::put('/edit-update/{id}', [AdminUserController::class, 'editUser'])->name('AdminUser.editUser');
     Route::delete('/user-delete/{id}', [AdminUserController::class, 'userDelete'])->name('AdminUser.userDelete');
 
     //Admin - Event function
@@ -42,7 +42,7 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/store-event', [AdminEventController::class, 'addEvent'])->name('AdminEvent.addEvent');
     Route::get('/edit-event', [AdminEventController::class, 'showEditEvent'])->name('AdminEvent.showEditEvent');
     Route::post('/event-store', [AdminEventController::class, 'editEvent'])->name('AdminEvent.editEvent');
-    Route::delete('/event-delete', [AdminEventController::class, 'eventDelete'])->name('AdminEvent.eventDelete');
+    Route::delete('/event-delete/{id}', [AdminEventController::class, 'eventDelete'])->name('AdminEvent.eventDelete');
 
     //booking
     Route::get('/booking-list', [AdminController::class, 'showBooking'])->name('Admin.showBooking');
