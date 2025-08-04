@@ -3,7 +3,7 @@
 <!-- Main application container with a responsive flex layout -->
 <div class="flex flex-col md:flex-row min-h-screen">
 
-@include('components.admin_sidebar')
+    @include('components.admin_sidebar')
     <!-- Main Content Area -->
     <main class="flex-1 p-8 overflow-auto">
 
@@ -36,58 +36,47 @@
             <!-- Total Bookings Card -->
             <div class="bg-white p-6 rounded-lg shadow-md text-center">
                 <h2 class="text-xl font-semibold text-gray-700">Total Bookings</h2>
-                <p class="text-4xl font-bold text-gray-900 mt-2">890</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">{{ $totalBooking }}</p>
             </div>
         </section>
 
-        <!-- Recent Events Table Section -->
-        <section class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Events</h2>
+        <!-- Recent Users Table Section -->
+        <section class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Recent Events</h2>
+            </div>
             <div class="overflow-x-auto">
                 <table class="min-w-full text-left table-auto">
                     <thead class="text-gray-600 border-b-2 border-gray-200">
                         <tr>
                             <th class="py-3 px-4 font-semibold">ID</th>
                             <th class="py-3 px-4 font-semibold">Event Title</th>
-                            <th class="py-3 px-4 font-semibold">Date</th>
-                            <th class="py-3 px-4 font-semibold">Category</th>
+                            <th class="py-3 px-4 font-semibold">Event Date</th>
+                            <th class="py-3 px-4 font-semibold">Event Category</th>
                             <th class="py-3 px-4 font-semibold">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-100">
-                        <!-- Example Row 1 -->
+                        @foreach ($events as $event)
                         <tr class="hover:bg-gray-50 transition-colors duration-150">
-                            <td class="py-3 px-4">1</td>
-                            <td class="py-3 px-4">Music Festival 2023</td>
-                            <td class="py-3 px-4">2023-10-25</td>
-                            <td class="py-3 px-4">Music</td>
+                            <td class="py-3 px-4">{{ $event->id }}</td>
+                            <td class="py-3 px-4">{{$event->eventTitle}}</td>
+                            <td class="py-3 px-4">{{$event->eventDate}}</td>
+                            <td class="py-3 px-4">{{$event->eventCategory}}</td>
                             <td class="py-3 px-4">
-                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                <a href="#" class="text-red-600 hover:underline">Delete</a>
+                                <div class="flex items-center space-x-2">
+                                    <a href="{{route('AdminEvent.showEditEvent',$event->id)}}"
+                                        class="text-blue-600 hover:underline">Edit</a> &nbsp;&nbsp;|
+
+                                    <form action="{{route('AdminEvent.eventDelete',$event->id)}}" method="POST">
+                                        @method("DELETE")
+                                        @csrf
+                                        <button type="submit" class="text-red-600 hover:underline">Delete</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
-                        <!-- Example Row 2 -->
-                        <tr class="hover:bg-gray-50 transition-colors duration-150">
-                            <td class="py-3 px-4">2</td>
-                            <td class="py-3 px-4">Tech Conference</td>
-                            <td class="py-3 px-4">2023-11-10</td>
-                            <td class="py-3 px-4">Tech</td>
-                            <td class="py-3 px-4">
-                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                <a href="#" class="text-red-600 hover:underline">Delete</a>
-                            </td>
-                        </tr>
-                        <!-- Example Row 3 -->
-                        <tr class="hover:bg-gray-50 transition-colors duration-150">
-                            <td class="py-3 px-4">3</td>
-                            <td class="py-3 px-4">Art Exhibition</td>
-                            <td class="py-3 px-4">2023-12-01</td>
-                            <td class="py-3 px-4">Art</td>
-                            <td class="py-3 px-4">
-                                <a href="#" class="text-blue-600 hover:underline">Edit</a> |
-                                <a href="#" class="text-red-600 hover:underline">Delete</a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
