@@ -60,7 +60,7 @@
                                 <td class="py-3 px-4">103</td>
                                 <td class="py-3 px-4">Peter Jones</td>
                                 <td class="py-3 px-4">
-                                    <a href="#" class="text-blue-600 hover:underline">Edit</a> |
+                                    <a href="/edit-update/{id}" class="text-blue-600 hover:underline">Edit</a> |
                                     <a href="#" class="text-red-600 hover:underline">Delete</a>
                                 </td>
                             </tr>

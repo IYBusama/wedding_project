@@ -32,9 +32,9 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/user-list', [AdminUserController::class, 'showUserList'])->name('AdminUser.showUserList');
     Route::get('/add-user', [AdminUserController::class, 'showAddUser'])->name('AdminUser.showAddUser');
     Route::post('/user-store', [AdminUserController::class, 'AddUser'])->name('AdminUser.AddUser');
-    Route::get('/edit-user', [AdminUserController::class, 'showEditUser'])->name('AdminUser.showEditUser');
-    Route::post('/edit-update', [AdminUserController::class, 'editUser'])->name('AdminUser.editUser');
-    Route::delete('/user-delete', [AdminUserController::class, 'userDelete'])->name('AdminUser.userDelete');
+    Route::get('/edit-user/{id}', [AdminUserController::class, 'showEditUser'])->name('AdminUser.showEditUser');
+    Route::post('/edit-update/{id}', [AdminUserController::class, 'editUser'])->name('AdminUser.editUser');
+    Route::delete('/user-delete/{id}', [AdminUserController::class, 'userDelete'])->name('AdminUser.userDelete');
 
     //Admin - Event function
     Route::get('/add-event', [AdminEventController::class, 'showAddEvent'])->name('AdminEvent.showAddEvent');
