@@ -26,12 +26,12 @@
             <!-- Total Events Card -->
             <div class="bg-white p-6 rounded-lg shadow-md text-center">
                 <h2 class="text-xl font-semibold text-gray-700">Total Events</h2>
-                <p class="text-4xl font-bold text-gray-900 mt-2">1,234</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">{{$totalEvent}}</p>
             </div>
             <!-- Total Users Card -->
             <div class="bg-white p-6 rounded-lg shadow-md text-center">
                 <h2 class="text-xl font-semibold text-gray-700">Total Users</h2>
-                <p class="text-4xl font-bold text-gray-900 mt-2">567</p>
+                <p class="text-4xl font-bold text-gray-900 mt-2">{{ $totalUser }}</p>
             </div>
             <!-- Total Bookings Card -->
             <div class="bg-white p-6 rounded-lg shadow-md text-center">
