@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('eventTitle');
+            $table->enum('eventSelect', ['music-festival', 'tech-conference', 'art-exhibition']);
+            $table->string('userName');
+            $table->string('userEmail');
+            $table->string('bookingDate');
             $table->timestamps();
         });
     }
