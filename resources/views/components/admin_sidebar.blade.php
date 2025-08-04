@@ -4,7 +4,7 @@
      <nav>
          <ul class="space-y-2">
              <li>
-                 <a href="/admin/dashboard" class="flex items-center p-3 rounded-lg bg-gray-200 text-gray-800 font-semibold transition-colors duration-200">
+                 <a href="/admin/dashboard" class="flex items-center p-3 rounded-lg hover:bg-gray-100 text-gray-600 transition-colors duration-200">
                      Dashboard
                  </a>
              </li>
