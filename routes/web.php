@@ -37,6 +37,7 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/user-delete/{id}', [AdminUserController::class, 'userDelete'])->name('AdminUser.userDelete');
 
     //Admin - Event function
+    Route::get('/event-list',[AdminEventController::class,'showeventList'])->name('AdminEvent.showeventList');
     Route::get('/add-event', [AdminEventController::class, 'showAddEvent'])->name('AdminEvent.showAddEvent');
     Route::post('/store-event', [AdminEventController::class, 'addEvent'])->name('AdminEvent.addEvent');
     Route::get('/edit-event', [AdminEventController::class, 'showEditEvent'])->name('AdminEvent.showEditEvent');

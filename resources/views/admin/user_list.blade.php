@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 @section('dashboard')
+
 <body class="bg-gray-100 font-sans">
 
     <!-- Main application container with a responsive flex layout -->
@@ -26,7 +27,12 @@
 
             <!-- Recent Users Table Section -->
             <section class="bg-white p-6 rounded-lg shadow-md mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Recent Users</h2>
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-2xl font-bold text-gray-800">Recent Users</h2>
+                    <a href="#" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-md shadow-lg hover:bg-blue-700 transition-colors duration-200">
+                        Add New user
+                    </a>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-left table-auto">
                         <thead class="text-gray-600 border-b-2 border-gray-200">

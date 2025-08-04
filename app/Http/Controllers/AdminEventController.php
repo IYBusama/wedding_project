@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 class AdminEventController extends Controller
-{
+{   
+    public function showeventList(){
+        return view('admin.event_list');
+    }
     public function showAddEvent()
     {
         return view('admin.add_event');
