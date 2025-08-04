@@ -10,7 +10,7 @@ class AdminController extends Controller
       return view('admin.dashboard');  
     }
     public function showBooking(){
-
+      return view('admin.booking_list');
     }
     public function deleteBooking(Request $request,$id){
       
