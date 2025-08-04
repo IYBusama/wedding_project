@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
@@ -18,10 +19,18 @@ class AdminUserController extends Controller
     public function AddUser(Request $request)
     {
         $request->validate([
-            'UserName' => 'required|string|max:255',
-            'UserEmail' => 'required',
-            'UserPassword' => 'required|min:6',
+            'name' => 'required|string|max:255',
+            'email' => 'required',
+            'password' => 'required|min:6',
         ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+
+        return redirect()->route('AdminUser.showAddUser');
     }
     public function showEditUser()
     {
@@ -30,9 +39,9 @@ class AdminUserController extends Controller
     public function editUser(Request $request)
     {
         $request->validate([
-            'UserName' => 'required|string|max:255',
-            'UserEmail' => 'required',
-            'UserPassword' => 'required|min:6',
+            'name' => 'required|string|max:255',
+            'email' => 'required',
+            'password' => 'required|min:6',
         ]);
     }
     public function userDelete(Request $request, $id) {}
