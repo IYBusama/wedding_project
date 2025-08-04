@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommonPageController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleMiddleware;
 
 //common pages
@@ -51,7 +52,5 @@ Route::prefix('/admin')->middleware(['auth', 'role:admin'])->group(function () {
 
 // User dashboard routes
 Route::prefix('/user')->middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('user.dashboard');
-    })->name('user.dashboard');
+    Route::get('/dashboard', [UserController::class,'showDashboard'])->name('user.dashboard');
 });
